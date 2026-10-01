@@ -905,9 +905,9 @@ html { scrollbar-color: var(--line-strong) var(--bg); scrollbar-width: thin; }
       <h1 class="hero__title" id="hero-title">La música, <span>sin nada en medio.</span></h1>
       <p class="hero__sub" style="--i:1">Un reproductor para Windows, ligero y sin anuncios, que aprende de lo que escuchas y guarda todo en tu PC.</p>
       <div class="hero__cta" style="--i:2">
-        <a class="btn btn--primary" data-download href="https://github.com/Hanyer001/antares-actualizaciones/releases/download/v0.3.0/Antares_0.3.0_x64-setup.exe">
+        <a class="btn btn--primary" data-download href="https://github.com/Hanyer001/antares-actualizaciones/releases/latest/download/Antares-Setup.exe">
           <svg class="i" aria-hidden="true" data-os-icon><use href="#i-windows"/></svg>
-          <span class="btn__label"><span data-dl-label>Descargar para Windows</span><span class="btn__meta" data-dl-meta>v0.3.0 · 22,1 MB</span></span>
+          <span class="btn__label"><span data-dl-label>Descargar para Windows</span><span class="btn__meta" data-dl-meta>v0.3.1 · 22,1 MB</span></span>
         </a>
         <a class="btn btn--ghost" data-github href="https://github.com/Hanyer001/Antares">
           <svg class="i" aria-hidden="true"><use href="#i-github"/></svg>
@@ -1354,13 +1354,13 @@ nueva    = <span class="a">R</span> · (0,5 + <span class="a">A</span>) · <span
           <div class="dl__os"><svg class="i" aria-hidden="true"><use href="#i-windows"/></svg>Windows 10 y 11, 64 bits</div>
           <h3>Instálalo una vez. Recibe las novedades.</h3>
           <dl class="dl__facts">
-            <div><dt>Versión</dt><dd>0.3.0</dd></div>
-            <div><dt>Tamaño</dt><dd>22,1 MB</dd></div>
+            <div><dt>Versión</dt><dd data-dl-version>0.3.1</dd></div>
+            <div><dt>Tamaño</dt><dd data-dl-size>22,1 MB</dd></div>
             <div><dt>Instalación</dt><dd>Para tu usuario</dd></div>
           </dl>
-          <a class="btn btn--primary" data-download href="https://github.com/Hanyer001/antares-actualizaciones/releases/download/v0.3.0/Antares_0.3.0_x64-setup.exe">
+          <a class="btn btn--primary" data-download href="https://github.com/Hanyer001/antares-actualizaciones/releases/latest/download/Antares-Setup.exe">
             <svg class="i" aria-hidden="true"><use href="#i-save"/></svg>
-            <span class="btn__label"><span>Descargar para Windows</span><span class="btn__meta">Antares_0.3.0_x64-setup.exe</span></span>
+            <span class="btn__label"><span>Descargar para Windows</span><span class="btn__meta" data-dl-file>Antares-Setup.exe · última versión</span></span>
           </a>
           <ul class="dl__notes">
             <li><svg class="i"><use href="#i-check"/></svg>No pide permisos de administrador.</li>
@@ -1470,10 +1470,16 @@ nueva    = <span class="a">R</span> · (0,5 + <span class="a">A</span>) · <span
 /* ========================================================================
    Versión publicada y enlaces oficiales.
    ======================================================================== */
+// La descarga apunta siempre a la última versión publicada: GitHub sirve en
+// `releases/latest/download/Antares-Setup.exe` el de la versión más nueva
+// (el script de publicación sube esa copia con nombre fijo). Versión y
+// tamaño se leen de GitHub al abrir la página; estos son solo por si no
+// responde.
 const CONFIG = {
-  version: "0.3.0",
+  version: "0.3.1",
   size: "22,1 MB",
-  windowsUrl: "https://github.com/Hanyer001/antares-actualizaciones/releases/download/v0.3.0/Antares_0.3.0_x64-setup.exe",
+  windowsUrl: "https://github.com/Hanyer001/antares-actualizaciones/releases/latest/download/Antares-Setup.exe",
+  latestApi: "https://api.github.com/repos/Hanyer001/antares-actualizaciones/releases/latest",
   githubUrl: "https://github.com/Hanyer001/Antares",
 };
 
@@ -1509,11 +1515,36 @@ const finePointer = matchMedia("(hover: hover) and (pointer: fine)");
   } else if (ios) {
     meta.textContent = "Disponible solo para Windows";
     hero.href = "#descargar";
-  } else if (!windows) {
-    meta.textContent = `v${CONFIG.version} · Solo para Windows`;
-  } else {
-    meta.textContent = `v${CONFIG.version} · ${CONFIG.size}`;
   }
+
+  function renderMeta() {
+    if (android || ios) return;
+    meta.textContent = windows ? `v${CONFIG.version} · ${CONFIG.size}` : `v${CONFIG.version} · Solo para Windows`;
+    for (const el of document.querySelectorAll("[data-dl-version]")) el.textContent = CONFIG.version;
+    for (const el of document.querySelectorAll("[data-dl-size]")) el.textContent = CONFIG.size;
+  }
+  renderMeta();
+
+  // La versión publicada de verdad, con su tamaño. Si el instalador con
+  // nombre fijo no estuviera subido, se usa el de la versión: la descarga
+  // nunca queda rota.
+  fetch(CONFIG.latestApi, { headers: { Accept: "application/vnd.github+json" } })
+    .then((r) => (r.ok ? r.json() : Promise.reject(r.status)))
+    .then((release) => {
+      const assets = release.assets ?? [];
+      const asset =
+        assets.find((a) => a.name === "Antares-Setup.exe") ??
+        assets.find((a) => /_x64-setup\.exe$/i.test(a.name));
+      if (!asset) return;
+      CONFIG.version = String(release.tag_name ?? "").replace(/^v/i, "") || CONFIG.version;
+      CONFIG.size = `${(asset.size / 1e6).toFixed(1).replace(".", ",")} MB`;
+      CONFIG.windowsUrl = asset.browser_download_url;
+      for (const link of document.querySelectorAll("[data-download]")) {
+        if (link.getAttribute("href") !== "#descargar") link.href = CONFIG.windowsUrl;
+      }
+      renderMeta();
+    })
+    .catch(() => {});
 
   if (CONFIG.githubUrl) {
     for (const link of document.querySelectorAll("[data-github]")) {
