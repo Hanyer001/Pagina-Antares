@@ -123,7 +123,9 @@ html { scrollbar-color: var(--line-strong) var(--bg); scrollbar-width: thin; }
 }
 .aurora i {
   position: absolute; display: block; border-radius: 50%;
-  filter: blur(90px); opacity: 0.55; will-change: transform;
+  /* Sin filter: blur: el radial-gradient ya es difuso, y desenfocar capas de
+     media pantalla que se mueven y escalan se recalcula en cada fotograma. */
+  opacity: 0.55; will-change: transform;
 }
 .aurora i:nth-child(1) {
   width: 62vw; height: 52vw; left: 34vw; top: -22vw;
@@ -259,7 +261,7 @@ html { scrollbar-color: var(--line-strong) var(--bg); scrollbar-width: thin; }
     radial-gradient(30% 35% at 70% 75%, rgb(224 83 61 / 0.2), transparent 70%);
   filter: blur(30px);
 }
-.stage__float { position: absolute; left: 0; top: 0; animation: float 9s ease-in-out infinite; }
+.stage__float { position: absolute; left: 0; top: 0; animation: float 9s ease-in-out infinite; will-change: transform; }
 @keyframes float {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-10px); }
@@ -286,18 +288,19 @@ html { scrollbar-color: var(--line-strong) var(--bg); scrollbar-width: thin; }
     inset 0 1px 0 rgb(255 255 255 / 0.25),
     0 40px 80px -20px rgb(0 0 0 / 0.7),
     0 80px 160px -40px hsl(var(--accent-h) 60% 30% / 0.45);
-  -webkit-backdrop-filter: blur(14px);
-  backdrop-filter: blur(14px);
+  /* Sin backdrop-filter ni -webkit-box-reflect: sobre una ventana en 3D que
+     flota y sigue al ratón, los dos se recalculaban en cada fotograma (el
+     reflejo dibujaba la ventana entera dos veces) y daban tirones. */
+  background-color: rgb(14 16 20 / 0.55);
   transform: rotateY(-17deg) rotateX(7deg);
   transform-origin: 35% 50%;
-  -webkit-box-reflect: below 18px linear-gradient(transparent 72%, rgb(0 0 0 / 0.16));
+  will-change: transform;
 }
 .bezel__sheen {
   position: absolute; inset: 0; border-radius: inherit; pointer-events: none; z-index: 3;
   background:
     radial-gradient(520px circle at var(--mx, 30%) var(--my, 20%), rgb(255 255 255 / 0.09), transparent 45%),
     linear-gradient(112deg, rgb(255 255 255 / 0.07) 0%, transparent 28%, transparent 70%, rgb(255 255 255 / 0.03));
-  mix-blend-mode: screen;
 }
 
 /* ── La ventana de Antares, recreada a 1280×800 ──────────────────────── */
@@ -415,7 +418,7 @@ html { scrollbar-color: var(--line-strong) var(--bg); scrollbar-width: thin; }
   -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
   mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
 }
-.ticker__track { display: flex; width: max-content; animation: ticker 48s linear infinite; }
+.ticker__track { display: flex; width: max-content; animation: ticker 48s linear infinite; will-change: transform; }
 .ticker ul { display: flex; align-items: center; flex: none; }
 .ticker li {
   display: flex; align-items: center; gap: 36px; padding-right: 36px;
@@ -1572,17 +1575,30 @@ document.querySelectorAll(".reveal").forEach((el) => revealer.observe(el));
     else raf = 0;
   }
 
+  // Las medidas se leen al entrar el ratón, no en cada movimiento: leerlas
+  // justo después de girar la ventana obligaba a recalcular la página entera.
+  let heroRect = null;
+  let bezelRect = null;
+  function measure() {
+    heroRect = hero.getBoundingClientRect();
+    bezelRect = bezel.getBoundingClientRect();
+  }
+
   function onMove(event) {
-    const r = hero.getBoundingClientRect();
+    if (!heroRect) measure();
+    const r = heroRect;
     const px = (event.clientX - r.left) / r.width - 0.5;
     const py = (event.clientY - r.top) / r.height - 0.5;
     target.y = px * 12;
     target.x = -py * 8;
-    const b = bezel.getBoundingClientRect();
+    const b = bezelRect;
     sheen.style.setProperty("--mx", `${((event.clientX - b.left) / b.width) * 100}%`);
     sheen.style.setProperty("--my", `${((event.clientY - b.top) / b.height) * 100}%`);
     if (!raf) raf = requestAnimationFrame(tick);
   }
+  hero.addEventListener("pointerenter", measure);
+  addEventListener("scroll", () => { heroRect = null; }, { passive: true });
+  addEventListener("resize", () => { heroRect = null; });
 
   function onLeave() {
     target.x = 0; target.y = 0;
