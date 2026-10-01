@@ -883,6 +883,7 @@ html { scrollbar-color: var(--line-strong) var(--bg); scrollbar-width: thin; }
     <nav class="nav__links" aria-label="Secciones">
       <a href="#funciones">Funciones</a>
       <a href="#demo">Demo</a>
+      <a href="#novedades">Novedades</a>
       <a href="#por-que">Por qué</a>
       <a href="#tecnica">Técnica</a>
       <a href="#preguntas">Preguntas</a>
@@ -901,15 +902,14 @@ html { scrollbar-color: var(--line-strong) var(--bg); scrollbar-width: thin; }
       <h1 class="hero__title" id="hero-title">La música, <span>sin nada en medio.</span></h1>
       <p class="hero__sub" style="--i:1">Un reproductor para Windows, ligero y sin anuncios, que aprende de lo que escuchas y guarda todo en tu PC.</p>
       <div class="hero__cta" style="--i:2">
-        <a class="btn btn--primary" data-download href="#descargar">
+        <a class="btn btn--primary" data-download href="https://github.com/Hanyer001/antares-actualizaciones/releases/download/v0.3.0/Antares_0.3.0_x64-setup.exe">
           <svg class="i" aria-hidden="true" data-os-icon><use href="#i-windows"/></svg>
-          <span class="btn__label"><span data-dl-label>Descargar para Windows</span><span class="btn__meta" data-dl-meta>v0.3.0 · 21,7 MB</span></span>
+          <span class="btn__label"><span data-dl-label>Descargar para Windows</span><span class="btn__meta" data-dl-meta>v0.3.0 · 22,1 MB</span></span>
         </a>
-        <!-- TODO: poner la URL del repositorio cuando sea público (CONFIG.githubUrl en el script). -->
-        <a class="btn btn--ghost" data-github href="#tecnica">
+        <a class="btn btn--ghost" data-github href="https://github.com/Hanyer001/Antares">
           <svg class="i" aria-hidden="true"><use href="#i-github"/></svg>
           <span>Ver en GitHub</span>
-          <span class="btn__tag" data-github-tag>Pronto</span>
+          
         </a>
       </div>
     </div>
@@ -1247,6 +1247,25 @@ html { scrollbar-color: var(--line-strong) var(--bg); scrollbar-width: thin; }
     </div>
   </section>
 
+  <section class="section" id="novedades" aria-labelledby="news-title" style="padding-top:0">
+    <div class="wrap">
+      <h2 class="h2 reveal" id="news-title">Más fácil de organizar. Lista para actualizarse.</h2>
+      <div class="tech">
+        <ul class="stack">
+          <li class="reveal"><b>Las nuevas versiones te avisan</b><p>Con la búsqueda de actualizaciones activada, Antares revisa al abrirse y cada seis horas mientras está abierta. Tú decides cuándo instalar; la app verifica la firma antes de actualizar.</p></li>
+          <li class="reveal"><b>Tu biblioteca, a tu manera</b><p>Organiza listas en carpetas, cambia sus portadas y mueve o copia varias canciones a la vez. Las listas inteligentes se recalculan según las reglas que elijas.</p></li>
+          <li class="reveal"><b>Un momento para cada música</b><p>Alterna entre Habitual, Trabajo, Fiesta y Relax. Cada momento recuerda tus elecciones sin cambiar por defecto tu gusto habitual.</p></li>
+        </ul>
+        <ul class="stack">
+          <li class="reveal"><b>Retoma lo que estabas escuchando</b><p>Antares recuerda tu cola y la posición de la canción. Si falla el enlace de audio, intenta recuperarlo; si no puede, ofrece reintentar, buscar otra versión o saltar.</p></li>
+          <li class="reveal"><b>Una copia de todo lo tuyo</b><p>Exporta y restaura una copia completa desde Ajustes → Tus datos, además de las copias automáticas que guarda la app.</p></li>
+          <li class="reveal"><b>Tu música, también en pequeño</b><p>Usa el mini reproductor y la barra de reproducción para controlar lo que suena. Trae tus listas desde enlaces públicos, texto o CSV.</p></li>
+        </ul>
+      </div>
+      <p><a class="btn btn--ghost" href="https://github.com/Hanyer001/antares-actualizaciones/releases/latest">Ver la versión publicada</a></p>
+    </div>
+  </section>
+
   <!-- ── 5. Por qué ──────────────────────────────────────────────────── -->
   <section class="section" id="por-que" aria-labelledby="w-title" style="padding-top:0">
     <div class="wrap">
@@ -1269,7 +1288,7 @@ html { scrollbar-color: var(--line-strong) var(--bg); scrollbar-width: thin; }
       <h2 class="h2 reveal" id="t-title">Por dentro: Rust, Tauri y cero frameworks.</h2>
       <div class="tech">
         <ul class="stack">
-          <li class="reveal"><b>Tauri 2 y Rust</b><p>El backend en Rust arranca rápido y ocupa poco. El instalador completo pesa 21,7 MB.</p></li>
+          <li class="reveal"><b>Tauri 2 y Rust</b><p>El backend en Rust arranca rápido y ocupa poco. El instalador completo pesa 22,1 MB.</p></li>
           <li class="reveal" style="--i:1"><b>HTML, CSS y JavaScript sin frameworks</b><p>Un módulo por responsabilidad. Los temas son solo variables CSS calculadas desde tus ajustes.</p></li>
           <li class="reveal" style="--i:2"><b>Web Audio con un proxy propio</b><p>El audio pasa por la app en trozos de 1 MiB para poder ecualizarlo, nivelarlo y hacer fundidos con dos platos.</p></li>
           <li class="reveal" style="--i:3"><b>yt-dlp, al día sin que hagas nada</b><p>Busca en YouTube y YouTube Music y resuelve solo el audio. Se actualiza una vez al día, sin permisos de administrador.</p></li>
@@ -1303,9 +1322,9 @@ nueva    = <span class="a">R</span> · (0,5 + <span class="a">A</span>) · <span
           </div>
 
           <div class="oss">
-            <p><b>Código abierto, muy pronto.</b> El repositorio se publicará en GitHub.</p>
-            <a class="btn btn--ghost" data-github href="#tecnica" style="min-height:44px;padding:10px 18px;font-size:14px">
-              <svg class="i" aria-hidden="true"><use href="#i-github"/></svg><span>Ver en GitHub</span><span class="btn__tag" data-github-tag>Pronto</span>
+            <p><b>El código ya está en GitHub.</b> Explora el proyecto, consulta su documentación o comparte un problema.</p>
+            <a class="btn btn--ghost" data-github href="https://github.com/Hanyer001/Antares" style="min-height:44px;padding:10px 18px;font-size:14px">
+              <svg class="i" aria-hidden="true"><use href="#i-github"/></svg><span>Ver en GitHub</span>
             </a>
           </div>
         </div>
@@ -1316,7 +1335,7 @@ nueva    = <span class="a">R</span> · (0,5 + <span class="a">A</span>) · <span
   <!-- ── 7. Métricas (todas salen del proyecto) ──────────────────────── -->
   <section class="metrics" aria-label="Antares en números">
     <div class="wrap metrics__grid">
-      <div class="metric reveal"><strong><span data-count="21.7" data-decimals="1">21,7</span><small>MB</small></strong><p>el instalador completo, con todo lo necesario dentro</p></div>
+      <div class="metric reveal"><strong><span data-count="22.1" data-decimals="1">22,1</span><small>MB</small></strong><p>el instalador de Windows, con actualizador integrado</p></div>
       <div class="metric reveal" style="--i:1"><strong><span data-count="10">10</span></strong><p>bandas de ecualizador, de 31 Hz a 16 kHz</p></div>
       <div class="metric reveal" style="--i:2"><strong><span data-count="12">12</span></strong><p>tipografías y 9 temas para dejarla a tu gusto</p></div>
       <div class="metric reveal" style="--i:3"><strong><span data-count="0">0</span></strong><p>anuncios, cuentas o registros</p></div>
@@ -1330,19 +1349,21 @@ nueva    = <span class="a">R</span> · (0,5 + <span class="a">A</span>) · <span
       <div class="dl">
         <div class="dl__win reveal" style="--i:1">
           <div class="dl__os"><svg class="i" aria-hidden="true"><use href="#i-windows"/></svg>Windows 10 y 11, 64 bits</div>
-          <h3>Listo para instalar.</h3>
+          <h3>Instálalo una vez. Recibe las novedades.</h3>
           <dl class="dl__facts">
             <div><dt>Versión</dt><dd>0.3.0</dd></div>
-            <div><dt>Tamaño</dt><dd>21,7 MB</dd></div>
+            <div><dt>Tamaño</dt><dd>22,1 MB</dd></div>
             <div><dt>Instalación</dt><dd>Para tu usuario</dd></div>
           </dl>
-          <a class="btn btn--primary" data-download href="#descargar">
+          <a class="btn btn--primary" data-download href="https://github.com/Hanyer001/antares-actualizaciones/releases/download/v0.3.0/Antares_0.3.0_x64-setup.exe">
             <svg class="i" aria-hidden="true"><use href="#i-save"/></svg>
             <span class="btn__label"><span>Descargar para Windows</span><span class="btn__meta">Antares_0.3.0_x64-setup.exe</span></span>
           </a>
           <ul class="dl__notes">
             <li><svg class="i"><use href="#i-check"/></svg>No pide permisos de administrador.</li>
-            <li><svg class="i"><use href="#i-check"/></svg>Al actualizar, instala encima: tus listas y ajustes se conservan.</li>
+            <li><svg class="i"><use href="#i-check"/></svg>Actualizador integrado: te avisa y tú confirmas la instalación.</li>
+            <li><svg class="i"><use href="#i-check"/></svg>Tus listas, historial y ajustes se conservan al actualizar.</li>
+            <li><svg class="i"><use href="#i-check"/></svg><a href="https://github.com/Hanyer001/antares-actualizaciones/releases/latest">Ver notas de la versión y descargas oficiales</a></li>
           </ul>
         </div>
         <div class="dl__android reveal" style="--i:2">
@@ -1371,6 +1392,10 @@ nueva    = <span class="a">R</span> · (0,5 + <span class="a">A</span>) · <span
         <details>
           <summary>¿Puedo traer mis listas de otras apps?<svg class="i" aria-hidden="true"><use href="#i-plus"/></svg></summary>
           <p>Sí. Pega el enlace de una lista pública de Spotify, Deezer, Apple Music, YouTube o YouTube Music (de Spotify, hasta 100 canciones por enlace). De cualquier otra app, pega las canciones como «Artista - Canción» o abre el CSV que exportan.</p>
+        </details>
+        <details>
+          <summary>¿Cómo recibo las próximas actualizaciones?<svg class="i" aria-hidden="true"><use href="#i-plus"/></svg></summary>
+          <p>Desde la versión 0.3.0, Antares puede avisarte de versiones nuevas al abrirse y cada seis horas mientras está abierta. Activa la búsqueda de actualizaciones en Ajustes o pulsa «Buscar versión nueva». Confirma el aviso cuando quieras instalar. Si tu versión anterior no tenía actualizador, instala este setup una vez manualmente.</p>
         </details>
         <details>
           <summary>¿Pierdo mis datos al actualizar?<svg class="i" aria-hidden="true"><use href="#i-plus"/></svg></summary>
@@ -1405,6 +1430,7 @@ nueva    = <span class="a">R</span> · (0,5 + <span class="a">A</span>) · <span
         <ul>
           <li><a href="#funciones">Funciones</a></li>
           <li><a href="#demo">Demo</a></li>
+          <li><a href="#novedades">Novedades</a></li>
           <li><a href="#descargar">Descargar</a></li>
           <li><a href="#preguntas">Preguntas</a></li>
         </ul>
@@ -1412,7 +1438,9 @@ nueva    = <span class="a">R</span> · (0,5 + <span class="a">A</span>) · <span
       <nav aria-label="Proyecto">
         <h2>Proyecto</h2>
         <ul>
-          <li><a data-github href="#tecnica">GitHub <span class="pending" data-github-tag>(pronto)</span></a></li>
+          <li><a data-github href="https://github.com/Hanyer001/Antares">GitHub </a></li>
+          <li><a href="https://github.com/Hanyer001/antares-actualizaciones/releases/latest">Versiones y descargas</a></li>
+          <li><a href="https://github.com/Hanyer001/Antares/issues">Reportar un problema</a></li>
           <li><a href="#tecnica">Cómo está hecho</a></li>
           <!-- TODO: redes sociales. Sustituye este elemento por un <li><a href="URL">Nombre</a></li> por cada red. -->
           <li>Redes sociales <span class="pending">(pronto)</span></li>
@@ -1437,13 +1465,13 @@ nueva    = <span class="a">R</span> · (0,5 + <span class="a">A</span>) · <span
 
 <script>
 /* ========================================================================
-   CONFIGURACIÓN: rellena esto antes de publicar.
+   Versión publicada y enlaces oficiales.
    ======================================================================== */
 const CONFIG = {
   version: "0.3.0",
-  size: "21,7 MB",
-  windowsUrl: "", // TODO: enlace al instalador Antares_0.3.0_x64-setup.exe
-  githubUrl: "",  // TODO: URL del repositorio cuando sea público
+  size: "22,1 MB",
+  windowsUrl: "https://github.com/Hanyer001/antares-actualizaciones/releases/download/v0.3.0/Antares_0.3.0_x64-setup.exe",
+  githubUrl: "https://github.com/Hanyer001/Antares",
 };
 
 document.documentElement.classList.add("js");
