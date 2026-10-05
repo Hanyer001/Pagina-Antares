@@ -32,10 +32,10 @@ Windows desktop (installer `Antares_<version>_x64-setup.exe`, per-user, no admin
 
 ## Capabilities and Constraints
 
-- Current version: 0.3.0 (tauri.conf.json). Installer 0.3.0 is 22,088,736 bytes (22.1 MB / 21.1 MiB), with the signed updater integrated.
+- Current version: 0.3.2 (tauri.conf.json). Installer 0.3.2 is 25,599,036 bytes (25.6 MB / 24.4 MiB), with the signed updater integrated.
 - Android: an APK build exists in the codebase, but per the user it will ship in a future update. Present it as "coming soon", never as available.
 - macOS, Linux, iOS and web: not supported. Do not claim them.
-- Music source: YouTube / YouTube Music (yt-dlp on desktop). User wants this mentioned discreetly (technical section and FAQ only, not hero or feature headlines).
+- Music source: YouTube / YouTube Music (rusty_ytdl for desktop audio extraction; yt-dlp remains for search and playlists). User wants this mentioned discreetly (technical section and FAQ only, not hero or feature headlines).
 - Source code: public at https://github.com/Hanyer001/Antares. Windows releases: https://github.com/Hanyer001/antares-actualizaciones/releases/latest.
 - Updates: checks at startup and every six hours while open when enabled; asks before installation and verifies its signature. Older installations without the updater need one manual installation.
 - Undecided / missing: social links, price (none found; app appears free).
