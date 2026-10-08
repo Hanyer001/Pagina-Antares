@@ -32,8 +32,8 @@ Windows desktop (installer `Antares_<version>_x64-setup.exe`, per-user, no admin
 
 ## Capabilities and Constraints
 
-- Current version: 0.3.2 (tauri.conf.json). Installer 0.3.2 is 25,599,036 bytes (25.6 MB / 24.4 MiB), with the signed updater integrated.
-- Android: an APK build exists in the codebase, but per the user it will ship in a future update. Present it as "coming soon", never as available.
+- Current version: 0.3.3 (tauri.conf.json). Installer 0.3.3 is 25,656,066 bytes (25.7 MB / 24.5 MiB), with the signed updater integrated.
+- Android: Preview code includes native playback, touch controls, presets and recovery. No physical battery measurement is available. The website offers the stable Windows installer only; never present Android as stable.
 - macOS, Linux, iOS and web: not supported. Do not claim them.
 - Music source: YouTube / YouTube Music (rusty_ytdl for desktop audio extraction; yt-dlp remains for search and playlists). User wants this mentioned discreetly (technical section and FAQ only, not hero or feature headlines).
 - Source code: public at https://github.com/Hanyer001/Antares. Windows releases: https://github.com/Hanyer001/antares-actualizaciones/releases/latest.
@@ -62,3 +62,7 @@ Windows desktop (installer `Antares_<version>_x64-setup.exe`, per-user, no admin
 ## Accessibility & Inclusion
 
 The app ships a high-contrast theme, interface zoom 90-140 %, reduced motion options and rebindable shortcuts. The landing must respect prefers-reduced-motion, keyboard navigation and WCAG AA contrast.
+
+## Version 0.3.3
+
+Spotify pagination above 100 tracks (up to 500), full albums in order, compact artist view with five principal tracks and usual continuation, and explicit Solo este artista for the full queue.
