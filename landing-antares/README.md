@@ -3,14 +3,14 @@
 Página oficial de presentación y descarga de Antares para Windows.
 
 - **Sitio publicado:** https://hanyer001.github.io/Pagina-Antares/
-- **Versión presentada:** 0.3.2.
-- **Instalador:** 25,6 MB (25599036 bytes).
+- **Versión presentada:** 0.3.3.
+- **Instalador:** 25,7 MB (25656066 bytes).
 - **Código de la aplicación:** [Hanyer001/Antares](https://github.com/Hanyer001/Antares).
 - **Descargas y actualizaciones:** [antares-actualizaciones](https://github.com/Hanyer001/antares-actualizaciones/releases/latest).
 
-## Novedades de 0.3.2
+## Novedades de 0.3.3
 
-La página refleja la corrección de los enlaces de audio y la extracción nativa de Windows con `rusty_ytdl`. La aplicación conserva yt-dlp para búsquedas y listas. Las funciones, los enlaces y el tamaño del instalador deben corresponder al código y al paquete publicados.
+La página presenta la importación de listas de Spotify de más de 100 canciones, discos completos y la elección entre cinco principales con continuación habitual o Solo este artista. Android se identifica como Preview y no se anuncia como estable. Las funciones, los enlaces y el tamaño del instalador deben corresponder al código y al paquete publicados.
 
 ## Estructura
 
@@ -24,7 +24,7 @@ Los botones apuntan a la dirección estable:
 
 https://github.com/Hanyer001/antares-actualizaciones/releases/latest/download/Antares-Setup.exe
 
-El JavaScript consulta la API pública de GitHub para mostrar la versión y el tamaño del instalador más reciente. Si la consulta no responde, utiliza los valores de respaldo de `CONFIG`, actualizados a 0.3.2 y 25,6 MB. Los valores de la sección de métricas también se actualizan con cada paquete.
+El JavaScript consulta la API pública de GitHub para mostrar la versión y el tamaño del instalador más reciente. Si la consulta no responde, utiliza los valores de respaldo de `CONFIG`, actualizados a 0.3.3 y 25,7 MB. Los valores de la sección de métricas también se actualizan con cada paquete.
 
 ## Revisar y publicar
 
