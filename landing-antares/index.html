@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Antares | Reproductor de música para Windows</title>
+<title>Antares | Reproductor de música para Windows y Android</title>
 <meta name="description" content="Antares es un reproductor de música para Windows, ligero y sin anuncios: letras sincronizadas, ecualizador de 10 bandas, cola inteligente y recomendaciones que aprenden de lo que escuchas." />
 <meta name="theme-color" content="#08090b" />
-<meta property="og:title" content="Antares | Reproductor de música para Windows" />
+<meta property="og:title" content="Antares | Reproductor de música para Windows y Android" />
 <meta property="og:description" content="Ligero, sin anuncios y con todos tus datos en tu PC." />
 <meta property="og:type" content="website" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'%3E%3Crect width='128' height='128' rx='28' fill='%230E1116'/%3E%3Cpath d='M34 102 L64 26 L94 102' fill='none' stroke='%2393B4DD' stroke-width='11' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M44 74 h8 l5 -9 l7 17 l7 -17 l5 9 h8' fill='none' stroke='%23E0533D' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
@@ -830,6 +830,14 @@ html { scrollbar-color: var(--line-strong) var(--bg); scrollbar-width: thin; }
   .bezel, .nav.is-scrolled, .mini__ov { -webkit-backdrop-filter: none; backdrop-filter: none; }
   .nav.is-scrolled { background: var(--bg); }
 }
+
+.dl__android .phone { grid-row: auto; }
+.dl__android .android-copy { min-width: 0; }
+.dl__android .btn { margin-top: 24px; white-space: normal; justify-content: center; }
+.dl__android .android-links { margin-top: 18px; }
+.dl__android .android-links a { color: var(--accent); }
+.dl__android .android-note { font-size: 13px; line-height: 1.6; }
+@media(max-width:600px) { .dl__android { grid-template-columns: 1fr; } .dl__android .phone { display: none; } .dl__android .btn { width: 100%; } }
 </style>
 </head>
 <body>
@@ -903,7 +911,7 @@ html { scrollbar-color: var(--line-strong) var(--bg); scrollbar-width: thin; }
   <section class="hero" id="inicio" aria-labelledby="hero-title">
     <div class="hero__copy">
       <h1 class="hero__title" id="hero-title">La música, <span>sin nada en medio.</span></h1>
-      <p class="hero__sub" style="--i:1">Un reproductor para Windows, ligero y sin anuncios, que aprende de lo que escuchas y guarda todo en tu PC.</p>
+      <p class="hero__sub" style="--i:1">Tu música en Windows y Android, sin anuncios, con una biblioteca personal y un aspecto a tu gusto.</p>
       <div class="hero__cta" style="--i:2">
         <a class="btn btn--primary" data-download href="https://github.com/Hanyer001/antares-actualizaciones/releases/latest/download/Antares-Setup.exe">
           <svg class="i" aria-hidden="true" data-os-icon><use href="#i-windows"/></svg>
@@ -1371,9 +1379,12 @@ nueva    = <span class="a">R</span> · (0,5 + <span class="a">A</span>) · <span
         </div>
         <div class="dl__android reveal" style="--i:2">
           <div class="phone" aria-hidden="true"><i class="cv" style="--h:152"></i><div class="phone__lines"><i></i><i></i></div><div class="phone__tabs"><i></i><i></i><i></i><i></i></div></div>
-          <h3>Android</h3>
-          <p>La versión para el móvil llegará en una próxima actualización, con los controles en la pantalla de bloqueo.</p>
-          <div class="soon"><span>Próximamente</span></div>
+          <div class="android-copy"><div class="dl__os">Android 7.0 o posterior · ARM 32/64 bits</div>
+          <h3>Tu música también en el móvil.</h3>
+          <p>Antares 0.3.3 Beta 1: playlists, audio nativo y una interfaz personalizable para tocar y escuchar.</p>
+          <a class="btn btn--primary" data-android-download href="https://github.com/Hanyer001/antares-actualizaciones/releases/download/android-v0.3.3-beta.1/Antares-Android.apk"><svg class="i" aria-hidden="true"><use href="#i-save"/></svg><span class="btn__label"><span>Descargar para Android</span><span class="btn__meta" data-android-meta>0.3.3 Beta 1 · APK firmado</span></span></a>
+          <p class="android-links"><a href="https://github.com/Hanyer001/antares-actualizaciones/releases/tag/android-v0.3.3-beta.1">Notas e instrucciones de instalación</a></p>
+          <p class="android-note">Canal Beta. Si usas Preview, exporta una copia completa e impórtala en Antares para trasladar tu biblioteca.</p></div>
         </div>
       </div>
     </div>
@@ -1398,7 +1409,7 @@ nueva    = <span class="a">R</span> · (0,5 + <span class="a">A</span>) · <span
         </details>
         <details>
           <summary>¿Cómo recibo las próximas actualizaciones?<svg class="i" aria-hidden="true"><use href="#i-plus"/></svg></summary>
-          <p>Desde la versión 0.3.0, Antares puede avisarte de versiones nuevas al abrirse y cada seis horas mientras está abierta. Activa la búsqueda de actualizaciones en Ajustes o pulsa «Buscar versión nueva». Confirma el aviso cuando quieras instalar. Si tu versión anterior no tenía actualizador, instala este setup una vez manualmente.</p>
+          <p>En Windows, Antares puede avisarte de versiones nuevas al abrirse y cada seis horas mientras está abierta. Activa la búsqueda de actualizaciones en Ajustes o pulsa «Buscar versión nueva». Confirma el aviso cuando quieras instalar. Si tu versión anterior no tenía actualizador, instala este setup una vez manualmente. En Android Beta, descarga las nuevas versiones desde esta página o GitHub Releases e instala el APK sobre Antares, sin desinstalar. El aviso dentro de la app Android aún no está disponible.</p>
         </details>
         <details>
           <summary>¿Pierdo mis datos al actualizar?<svg class="i" aria-hidden="true"><use href="#i-plus"/></svg></summary>
@@ -1406,7 +1417,7 @@ nueva    = <span class="a">R</span> · (0,5 + <span class="a">A</span>) · <span
         </details>
         <details>
           <summary>¿Hay versión para Android o Mac?<svg class="i" aria-hidden="true"><use href="#i-plus"/></svg></summary>
-          <p>Android está en pruebas como Preview, con interfaz táctil y controles nativos. Su distribución estable llegará más adelante. Por ahora no hay versión para macOS ni Linux.</p>
+          <p>Android ya está disponible como Antares 0.3.3 Beta 1, con interfaz táctil y controles nativos. Descarga el APK en esta página. Por ahora no hay versión para macOS ni Linux.</p>
         </details>
         <details>
           <summary>¿Necesito permisos de administrador?<svg class="i" aria-hidden="true"><use href="#i-plus"/></svg></summary>
@@ -1425,7 +1436,7 @@ nueva    = <span class="a">R</span> · (0,5 + <span class="a">A</span>) · <span
           <svg viewBox="0 0 128 128" aria-hidden="true"><use href="#logo"/></svg>
           <span class="wordmark">ANTARES</span>
         </a>
-        <p>Reproductor de música para Windows, ligero y sin anuncios.</p>
+        <p>Reproductor de música para Windows y Android, ligero y sin anuncios.</p>
         <span class="meter" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
       </div>
       <nav aria-label="Producto">
@@ -1508,12 +1519,14 @@ const finePointer = matchMedia("(hover: hover) and (pointer: fine)");
   const meta = document.querySelector("[data-dl-meta]");
   const hero = document.querySelector(".hero [data-download]");
   if (android) {
-    label.textContent = "Android, próximamente";
-    meta.textContent = "Ya disponible en Windows";
+    label.textContent = "Descargar para Android";
+    meta.textContent = "0.3.3 Beta 1 · APK firmado";
     hero.querySelector("[data-os-icon]").remove();
-    hero.href = "#descargar";
+    hero.href = "https://github.com/Hanyer001/antares-actualizaciones/releases/download/android-v0.3.3-beta.1/Antares-Android.apk";
+    hero.dataset.androidDownload = "";
+    hero.removeAttribute("data-download");
   } else if (ios) {
-    meta.textContent = "Disponible solo para Windows";
+    meta.textContent = "Disponible para Windows y Android";
     hero.href = "#descargar";
   }
 
