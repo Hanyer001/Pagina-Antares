@@ -24,7 +24,7 @@ Antares is a desktop music player. You search a song or paste a link and it play
 - Recommender runs locally from your own listening stats, and every recommendation says why it is there.
 - Deep personalization: themes including one that takes the color of the playing artwork, 12 typefaces, layouts, player bar styles, profiles.
 - Import playlists from YouTube, YouTube Music, Spotify, Deezer, Apple Music, plain text or CSV.
-- All user data lives on the user's PC; incognito mode; automatic local backups.
+- Desktop data uses local per-user files and automatic backups. The experimental PWA stores libraries on its configured server.
 
 ## Operating Context
 
@@ -59,7 +59,7 @@ Windows desktop (installer `Antares_<version>_x64-setup.exe`, per-user, no admin
 
 - Honest claims only: every feature on the landing maps to code.
 - The music is the protagonist; the interface stays out of the way.
-- Everything is yours: local data, local recommender, full customization.
+- Personal library and customization with storage and access described for each platform.
 
 ## Accessibility & Inclusion
 
