@@ -3,14 +3,15 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Antares | Reproductor de música para Windows y Android</title>
-<meta name="description" content="Antares es un reproductor de música para Windows, ligero y sin anuncios: letras sincronizadas, ecualizador de 10 bandas, cola inteligente y recomendaciones que aprenden de lo que escuchas." />
+<title>Antares | Música para escritorio y móvil</title>
+<meta name="description" content="Música, listas y descubrimiento personal con Antares. Descargas para Windows y Android Beta, con avances en Rust, Leptos, macOS y web." />
 <meta name="theme-color" content="#08090b" />
-<meta property="og:title" content="Antares | Reproductor de música para Windows y Android" />
-<meta property="og:description" content="Ligero, sin anuncios y con todos tus datos en tu PC." />
+<meta property="og:title" content="Antares | Música para escritorio y móvil" />
+<meta property="og:description" content="Tu música y tu biblioteca personal. Windows y Android Beta disponibles. macOS y web en desarrollo." />
 <meta property="og:type" content="website" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'%3E%3Crect width='128' height='128' rx='28' fill='%230E1116'/%3E%3Cpath d='M34 102 L64 26 L94 102' fill='none' stroke='%2393B4DD' stroke-width='11' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M44 74 h8 l5 -9 l7 17 l7 -17 l5 9 h8' fill='none' stroke='%23E0533D' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
 <style>
+.source-note { max-width: 72ch; margin: 16px 0 28px; color: var(--text-dim); font-size: 16px; line-height: 1.7; }
 /* Inter, la tipografía que trae la app, incrustada para que la página sea un solo archivo. */
 @font-face {
   font-family: "Inter";
@@ -911,7 +912,7 @@ html { scrollbar-color: var(--line-strong) var(--bg); scrollbar-width: thin; }
   <section class="hero" id="inicio" aria-labelledby="hero-title">
     <div class="hero__copy">
       <h1 class="hero__title" id="hero-title">La música, <span>sin nada en medio.</span></h1>
-      <p class="hero__sub" style="--i:1">Tu música en Windows y Android, sin anuncios, con una biblioteca personal y un aspecto a tu gusto.</p>
+      <p class="hero__sub" style="--i:1">Tu música en Windows y Android Beta, con una biblioteca personal. Ahora también en desarrollo para Mac y web.</p>
       <div class="hero__cta" style="--i:2">
         <a class="btn btn--primary" data-download href="https://github.com/Hanyer001/antares-actualizaciones/releases/latest/download/Antares-Setup.exe">
           <svg class="i" aria-hidden="true" data-os-icon><use href="#i-windows"/></svg>
@@ -1277,6 +1278,24 @@ html { scrollbar-color: var(--line-strong) var(--bg); scrollbar-width: thin; }
     </div>
   </section>
 
+  <section class="section" id="desarrollo" aria-labelledby="development-title" style="padding-top:0">
+    <div class="wrap">
+      <h2 class="h2 reveal" id="development-title">Lo nuevo en el código de Antares.</h2>
+      <div class="tech">
+        <ul class="stack">
+          <li class="reveal"><b>macOS Apple Silicon</b><p>Reproducción, volumen, cola, mini y menú Reproducción comprobados en pruebas locales. La distribución pública para Mac está en preparación.</p></li>
+          <li class="reveal"><b>Preferencias y biblioteca en Rust</b><p>Esquema, validación y migraciones compartidos. El índice de canciones reutiliza el texto normalizado al volver a filtrar una lista.</p></li>
+        </ul>
+        <ul class="stack">
+          <li class="reveal"><b>Copias y perfiles protegidos</b><p>Restauración validada, respaldo previo y separación de usuarios. Las copias conservan el inicio automático y los atajos globales del equipo de destino.</p></li>
+          <li class="reveal"><b>Diagnóstico y entregas verificadas</b><p>Tiempos locales con mediana y p95. Herramientas Rust comprueban versiones, firmas y sumas antes de preparar una actualización.</p></li>
+        </ul>
+      </div>
+      <p class="reveal source-note">El código conserva la versión 0.3.3. Los paquetes publicados se identifican por sus etiquetas de release. Las novedades de desarrollo llegan a las descargas al publicar nuevos instaladores.</p>
+      <p><a class="btn btn--ghost" href="https://github.com/Hanyer001/Antares">Consultar el código y las pruebas</a></p>
+    </div>
+  </section>
+
   <!-- ── 5. Por qué ──────────────────────────────────────────────────── -->
   <section class="section" id="por-que" aria-labelledby="w-title" style="padding-top:0">
     <div class="wrap">
@@ -1285,7 +1304,7 @@ html { scrollbar-color: var(--line-strong) var(--bg); scrollbar-width: thin; }
         <div class="why__head" aria-hidden="true"><span>En una pestaña</span><span><svg class="i" viewBox="0 0 128 128" style="font-size:18px"><use href="#logo"/></svg>Con Antares</span></div>
         <div class="why__row reveal"><p>Cierras la pestaña y la música se corta.</p><p><svg class="i"><use href="#i-check"/></svg>Cierras la ventana y sigue sonando desde la bandeja del sistema.</p></div>
         <div class="why__row reveal"><p>Anuncios y un vídeo que no vas a mirar.</p><p><svg class="i"><use href="#i-check"/></svg>Solo el audio, sin anuncios, con un modo de ahorro de datos.</p></div>
-        <div class="why__row reveal"><p>Esperas a que cargue la siguiente canción.</p><p><svg class="i"><use href="#i-check"/></svg>La siguiente se prepara mientras suena la actual. El salto es instantáneo.</p></div>
+        <div class="why__row reveal"><p>Esperas a que cargue la siguiente canción.</p><p><svg class="i"><use href="#i-check"/></svg>La siguiente se prepara mientras suena la actual para reducir la espera al cambiar.</p></div>
         <div class="why__row reveal"><p>Recomendaciones sin explicación.</p><p><svg class="i"><use href="#i-check"/></svg>Cada una dice por qué está, y puedes pedir «Hoy no quiero esta canción».</p></div>
         <div class="why__row reveal"><p>Cada canción suena a un volumen distinto.</p><p><svg class="i"><use href="#i-check"/></svg>Nivelador de volumen, ecualizador y fundido de 1 a 12 segundos.</p></div>
         <div class="why__row reveal"><p>Al volver, empiezas de cero.</p><p><svg class="i"><use href="#i-check"/></svg>Retoma la cola, la canción y el segundo exacto donde lo dejaste.</p></div>
@@ -1296,13 +1315,14 @@ html { scrollbar-color: var(--line-strong) var(--bg); scrollbar-width: thin; }
   <!-- ── 6. Técnica ──────────────────────────────────────────────────── -->
   <section class="section" id="tecnica" aria-labelledby="t-title" style="padding-top:0">
     <div class="wrap">
-      <h2 class="h2 reveal" id="t-title">Por dentro: Rust, Tauri y cero frameworks.</h2>
+      <h2 class="h2 reveal" id="t-title">Por dentro, Rust, Tauri y Leptos.</h2>
+      <p class="reveal source-note">Estos avances están en el código de desarrollo. Las descargas corresponden a las versiones publicadas de Windows y Android.</p>
       <div class="tech">
         <ul class="stack">
-          <li class="reveal"><b>Tauri 2 y Rust</b><p>El backend en Rust arranca rápido y ocupa poco. El instalador completo pesa 25,7 MB.</p></li>
-          <li class="reveal" style="--i:1"><b>HTML, CSS y JavaScript sin frameworks</b><p>Un módulo por responsabilidad. Los temas son solo variables CSS calculadas desde tus ajustes.</p></li>
-          <li class="reveal" style="--i:2"><b>Web Audio con un proxy propio</b><p>El audio pasa por la app en trozos de 1 MiB para poder ecualizarlo, nivelarlo y hacer fundidos con dos platos.</p></li>
-          <li class="reveal" style="--i:3"><b>Extracción nativa con rusty_ytdl</b><p>El backend en Rust obtiene el stream de audio de YouTube. yt-dlp se conserva para búsquedas y listas y mantiene su actualizador.</p></li>
+          <li class="reveal"><b>Un núcleo compartido en Rust</b><p>El código actual comparte cola, recuperación, sesión, búsqueda y validación de preferencias entre escritorio y web mediante WebAssembly.</p></li>
+          <li class="reveal" style="--i:1"><b>Interfaz con Leptos</b><p>Los componentes Rust dibujan navegación, búsquedas, biblioteca, ajustes y reproductor. Los adaptadores del navegador conectan audio, eventos y almacenamiento.</p></li>
+          <li class="reveal" style="--i:2"><b>Audio adaptado a cada sistema</b><p>Windows usa WebView2 y Web Audio. macOS incorpora AAC y un puente HTTP para WKWebView. Android mantiene su servicio nativo de reproducción.</p></li>
+          <li class="reveal" style="--i:3"><b>Búsqueda y extracción en Rust</b><p>InnerTube y YouTube Music resuelven el catálogo y el audio. El extractor Rust rusty_ytdl actúa como respaldo en escritorio.</p></li>
         </ul>
 
         <div class="reveal" style="--i:1">
@@ -1357,6 +1377,7 @@ nueva    = <span class="a">R</span> · (0,5 + <span class="a">A</span>) · <span
   <section class="section" id="descargar" aria-labelledby="dl-title" style="padding-top:calc(var(--section) * 0.5)">
     <div class="wrap">
       <h2 class="h2 reveal" id="dl-title">Descarga Antares.</h2>
+      <p class="reveal source-note">Disponibles ahora, Windows 0.3.3 y Android 0.3.3 Beta 1. El código incorpora avances adicionales para macOS y web.</p>
       <div class="dl">
         <div class="dl__win reveal" style="--i:1">
           <div class="dl__os"><svg class="i" aria-hidden="true"><use href="#i-windows"/></svg>Windows 10 y 11, 64 bits</div>
@@ -1390,6 +1411,22 @@ nueva    = <span class="a">R</span> · (0,5 + <span class="a">A</span>) · <span
     </div>
   </section>
 
+  <section class="section" id="otras-plataformas" aria-labelledby="platforms-title" style="padding-top:0">
+    <div class="wrap">
+      <h2 class="h2 reveal" id="platforms-title">Mac, iPhone y web en desarrollo.</h2>
+      <div class="tech">
+        <ul class="stack">
+          <li class="reveal"><b>Mac con Apple Silicon</b><p>Puedes compilar desde el repositorio y consultar las comprobaciones locales de audio, controles y copias.</p><p><a href="https://github.com/Hanyer001/Antares/blob/main/docs/MACOS.md">Guía de macOS</a></p></li>
+          <li class="reveal"><b>Linux y Fedora</b><p>Adaptación experimental con un puente HTTP para el audio del WebView.</p><p><a href="https://github.com/Hanyer001/Antares/blob/main/docs/LINUX.md">Guía de Fedora</a></p></li>
+        </ul>
+        <ul class="stack">
+          <li class="reveal"><b>iPhone y PWA</b><p>La interfaz web comparte el motor Wasm. Para usarla necesita una API Rust alojada y accesible por HTTPS. El repositorio incluye también la adaptación del reproductor iOS.</p><p><a href="https://github.com/Hanyer001/Antares/blob/main/docs/WEB.md">Estado de web y iOS</a></p></li>
+          <li class="reveal"><b>Pruebas por plataforma</b><p>La ruta de escritorio distingue pruebas automatizadas, verificaciones en el Mac y comprobaciones físicas pendientes en Windows.</p><p><a href="https://github.com/Hanyer001/Antares/blob/main/docs/obsidian/Ruta%20de%20mejoras%20para%20macOS%20y%20Windows.md">Ver el registro de validación</a></p></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
   <!-- ── 9. Preguntas ────────────────────────────────────────────────── -->
   <section class="section" id="preguntas" aria-labelledby="q-title" style="padding-top:0">
     <div class="wrap faq">
@@ -1416,12 +1453,12 @@ nueva    = <span class="a">R</span> · (0,5 + <span class="a">A</span>) · <span
           <p>No. Abre el instalador nuevo encima del anterior, sin desinstalar. Además, Antares guarda copias automáticas y puedes exportar una copia completa a un archivo.</p>
         </details>
         <details>
-          <summary>¿Hay versión para Android o Mac?<svg class="i" aria-hidden="true"><use href="#i-plus"/></svg></summary>
-          <p>Android ya está disponible como Antares 0.3.3 Beta 1, con interfaz táctil y controles nativos. Descarga el APK en esta página. Por ahora no hay versión para macOS ni Linux.</p>
+          <summary>¿Qué puedo usar en Android, Mac o iPhone?<svg class="i" aria-hidden="true"><use href="#i-plus"/></svg></summary>
+          <p>Android tiene la beta 0.3.3 Beta 1 disponible para descargar. macOS Apple Silicon tiene código y pruebas QA locales. La PWA para iPhone y la adaptación nativa iOS siguen en desarrollo y necesitan su entorno de servidor o compilación. Linux/Fedora también tiene una adaptación experimental desde fuentes.</p>
         </details>
         <details>
           <summary>¿Necesito permisos de administrador?<svg class="i" aria-hidden="true"><use href="#i-plus"/></svg></summary>
-          <p>No. El instalador se instala para tu usuario sin permisos de administrador. Las búsquedas y listas conservan la actualización automática de yt-dlp.</p>
+          <p>El instalador de Windows se instala para tu usuario. En el código actual, las búsquedas, las listas y la extracción de audio usan Rust y prescinden de yt-dlp y de un intérprete externo de Python.</p>
         </details>
       </div>
     </div>
@@ -1436,7 +1473,7 @@ nueva    = <span class="a">R</span> · (0,5 + <span class="a">A</span>) · <span
           <svg viewBox="0 0 128 128" aria-hidden="true"><use href="#logo"/></svg>
           <span class="wordmark">ANTARES</span>
         </a>
-        <p>Reproductor de música para Windows y Android, ligero y sin anuncios.</p>
+        <p>Tu música en Windows y Android Beta. Desarrollo en Rust para macOS y web.</p>
         <span class="meter" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
       </div>
       <nav aria-label="Producto">
@@ -1504,6 +1541,7 @@ const finePointer = matchMedia("(hover: hover) and (pointer: fine)");
   const android = /Android/i.test(ua);
   const ios = /iPhone|iPad|iPod/i.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1);
   const windows = /Windows/i.test(ua) && !android;
+  const macos = /Macintosh|Mac OS X/i.test(ua) && !ios;
 
   for (const link of document.querySelectorAll("[data-download]")) {
     if (CONFIG.windowsUrl) link.href = CONFIG.windowsUrl;
@@ -1525,16 +1563,26 @@ const finePointer = matchMedia("(hover: hover) and (pointer: fine)");
     hero.href = "https://github.com/Hanyer001/antares-actualizaciones/releases/download/android-v0.3.3-beta.1/Antares-Android.apk";
     hero.dataset.androidDownload = "";
     hero.removeAttribute("data-download");
+  } else if (macos) {
+    label.textContent = "Ver Antares para Mac";
+    meta.textContent = "Apple Silicon · código y pruebas QA";
+    hero.href = "https://github.com/Hanyer001/Antares/blob/main/docs/MACOS.md";
+    hero.querySelector("[data-os-icon]").remove();
+    hero.removeAttribute("data-download");
   } else if (ios) {
-    meta.textContent = "Disponible para Windows y Android";
-    hero.href = "#descargar";
+    label.textContent = "Ver el desarrollo para iPhone";
+    meta.textContent = "PWA e iOS · experimental";
+    hero.href = "#otras-plataformas";
+    hero.querySelector("[data-os-icon]").remove();
+    hero.removeAttribute("data-download");
   }
 
   function renderMeta() {
-    if (android || ios) return;
-    meta.textContent = windows ? `v${CONFIG.version} · ${CONFIG.size}` : `v${CONFIG.version} · Solo para Windows`;
     for (const el of document.querySelectorAll("[data-dl-version]")) el.textContent = CONFIG.version;
     for (const el of document.querySelectorAll("[data-dl-size]")) el.textContent = CONFIG.size;
+    if (android || ios || macos) return;
+    meta.textContent = windows ? `v${CONFIG.version} · ${CONFIG.size}` : `v${CONFIG.version} · Solo para Windows`;
+
   }
   renderMeta();
 

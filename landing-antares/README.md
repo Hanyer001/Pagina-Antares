@@ -13,3 +13,9 @@ See the [main README](../README.md) for setup, platform support and publishing i
 - Confirm both platform buttons and the responsive layout after deployment.
 
 Product and design context is available in [PRODUCT.md](docs/PRODUCT.md) and [DESIGN.md](docs/DESIGN.md), currently in Spanish.
+
+## Current source information
+
+Development sections now describe the shared Rust/Wasm core, Leptos, Rust search and extraction, macOS QA and experimental web/iPhone support. Mac visitors open the macOS guide; iPhone visitors open the platform status section. Published downloads retain their own release versions.
+
+Keep technical descriptions aligned with the source README and validation record. Update the product notes whenever platform status changes.

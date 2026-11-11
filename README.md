@@ -1,40 +1,41 @@
-# Antares — Product Website
+# Antares product website
 
-The presentation and download website for **Antares**, a music player for Windows and Android.
+Presentation and download website for Antares, with Windows and Android Beta downloads and development information for Rust, Leptos, macOS and web/iPhone.
 
-**[Visit the website](https://hanyer001.github.io/Pagina-Antares/)** · [Application source](https://github.com/Hanyer001/Antares) · [Releases](https://github.com/Hanyer001/antares-actualizaciones/releases)
+[Visit the website](https://hanyer001.github.io/Pagina-Antares/) · [Application source](https://github.com/Hanyer001/Antares) · [Published releases](https://github.com/Hanyer001/antares-actualizaciones/releases)
 
-## Purpose
+## Platform information
 
-This repository contains the static product page, separate from the application source and release artifacts. It presents features, platform availability and installation links.
+| Platform | Status shown on the website |
+| --- | --- |
+| Windows x64 | Published stable 0.3.3. Download metadata follows GitHub Releases. |
+| Android ARM 32/64 | Published 0.3.3 Beta 1, Android 7.0+. APK points to its prerelease tag. |
+| macOS Apple Silicon | Source and local QA. The Mac action opens the build/validation guide. |
+| iPhone / web | Experimental PWA and iOS source adaptation. The PWA needs a hosted Rust API. |
+| Linux / Fedora | Experimental source adaptation linked from the platform section. |
 
-- **Windows:** stable 0.3.3, distributed through the latest stable release channel.
-- **Android:** 0.3.3 Beta 1, Android 7.0+ on 32-bit and 64-bit ARM.
-- Download buttons choose the Android APK or Windows installer based on the visitor's platform.
-- Public GitHub release metadata supplies the Windows version and installer size, with configured fallback values.
+The development sections describe the current source tree. Download cards describe published packages. New source changes become downloadable updates after new release packages are built and published.
 
-Android remains a beta. Its download points to a specific prerelease tag and does not replace the Windows stable channel. Automatic in-app update notifications on Android are not yet implemented.
+Search and audio extraction in the current application use Rust, InnerTube and the patched `rusty_ytdl` fallback. Shared rules and preference migrations compile to Wasm. Leptos renders application components while JavaScript adapters connect browser and native APIs. The product page itself uses static HTML, CSS and JavaScript.
 
-## Run locally
-
-Requires Python 3 for a static server; there is no npm build step.
-
-```sh
-git clone https://github.com/Hanyer001/Pagina-Antares.git
-cd Pagina-Antares
-python3 -m http.server 8000 --bind 127.0.0.1
-```
-
-Open [http://127.0.0.1:8000/](http://127.0.0.1:8000/). On Windows, `py` can replace `python3`.
-
-## Structure and publishing
+## Repository structure
 
 | Path | Purpose |
 | --- | --- |
-| `index.html` | Production page, including styles and JavaScript. |
-| `landing-antares/index.html` | Working copy of the same page. |
-| `landing-antares/docs/` | Product and design notes in Spanish. |
+| `index.html` | Production page with inline styles and scripts. |
+| `landing-antares/index.html` | Synchronized working copy of the production page. |
+| `landing-antares/docs/` | Product and design context for maintenance. |
 
-GitHub Pages serves the root of `main`. Keep both HTML copies synchronized when editing. The [working-directory README](landing-antares/README.md) summarizes maintenance.
+GitHub Pages serves the root of `main`. Keep both HTML copies identical. Application source lives in `Hanyer001/Antares`; published installers live in `Hanyer001/antares-actualizaciones`.
 
-Before publishing, check the release tag, Windows package size, fallback metadata and both platform download links. Verify the mobile layout and published page after deployment. Downloads are hosted as GitHub Release assets in `antares-actualizaciones`, rather than stored in this website repository.
+## Preview and verification
+
+The page has no dependency installation or build step. Use a local static server, for example Python's standard development server.
+
+```sh
+python3 -m http.server 8000 --bind 127.0.0.1
+```
+
+Open [the local preview](http://127.0.0.1:8000/). Verify Windows and Android downloads, Mac and iPhone actions, release metadata, navigation and the mobile layout before publishing. Confirm the deployed page after the push to `main`.
+
+The published Windows installer and Android APK have separate channels. Preserve those release links when updating development information. The Windows file size shown by the page refers to its published installer.
